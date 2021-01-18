@@ -1,5 +1,5 @@
 #  实例化
-在 2.x 中用的 new Vue 创建实例，3.x使用 createApp 函数创建实例
+在 2.x 中用的 new Vue 创建实例，3.x使用 createApp 函数创建实例  
 在 2.x 所有属性和方法设置绑定在全局 Vue 对象上，3.x 改为绑定在 vue 实例上 ✨ 
 
 # API
