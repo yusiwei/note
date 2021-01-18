@@ -22,9 +22,11 @@
 
 # Fragment
 · 2.x 中 template 只允许一个 根节点
+
 · 2.x  挂载后 可以通过 this.$el  访问根元素 
 
 · 3.x  支持多个根节点，如 react中的  <> </>
+
 · 3.x  去掉this，并且支持Fragment，所以this.$el没有存在的意义，建议通过refs访问DOM
 
 # setup
