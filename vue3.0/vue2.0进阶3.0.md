@@ -5,12 +5,12 @@
 # API
 2.x 中，所有数据在 data中 定义返回，方法定义在 methods 下， this调用
   
-3.x 中，所有逻辑代码在 setup 方法中实现， data, watch, compend methods, hooks 不再有 this
-3.x 中 setup方法 在组件生命周期内只执行一次，不会重复执行
-    watch 和 watchEffect
-    watch 3.x中 支持监听单个或者多个属性，
+3.x 中，所有逻辑代码在 setup 方法中实现， data, watch, compend methods, hooks 不再有 this 
+3.x 中 setup方法 在组件生命周期内只执行一次，不会重复执行 
+    watch 和 watchEffect 
+    watch 3.x中 支持监听单个或者多个属性，  
     watchEffect 3.x 中 此方法返回一个方法，用于停止监听， 注册后会被立即使用
-
+ 
 #  生命周期
 · 2.x 生命周期钩子放在 methods 同级属性下
 
