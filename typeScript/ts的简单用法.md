@@ -5,7 +5,7 @@ ts 是强类型，提供一套静态检测机制，写代码过程中更改变�
 
 # TS 有 枚举、泛型、类型转换、命名空间、声明文件、类、接口等
 ```js
-  1:ts支持与js 几乎相同的数据类型，还提供了 枚举类型，元祖 方便使用
+  1: ts支持与js 几乎相同的数据类型，还提供了 枚举类型，元祖 方便使用
     boolean
     number
     string
@@ -13,7 +13,7 @@ ts 是强类型，提供一套静态检测机制，写代码过程中更改变�
   2: 数组和元祖类型的声明
       类型一致的时候：
         2.1: Array<number> -> [1, 2 , 3]
-           string[]      -> ['1', ',2', '3']
+             string[]      -> ['1', ',2', '3']
       类型不一致的时候：
         2.2：(number|string)[]  -> [1, 'a', 2, 'd']
       自由任意类型元素的数组
@@ -35,27 +35,26 @@ ts 是强类型，提供一套静态检测机制，写代码过程中更改变�
   5： any 任意类型  ps:如果全部都是any 就不用写 ts了
 
   6：void 类型  
-     一般用于函数返回值  TS中只有null和undefined可以赋值给void类型
+     一般用于函数返回值  TS 中只有 null 和 undefined 可以赋值给void类型
   
   7: never 类型
      永不存在的值的类型,一般用于抛出异常或根本不可能有返回值的函数。
 
   8： Object对象类型 
       let obj:object;
-      obj = {name:'lnj', age:33}   
-      // 一般类型 都直接 用 interface 定义了
-  9  接口 interface 类型
-     使用接口约束开发者的数据
+      obj = {name:'lnj', age:33}   // 一般对象 类型 都直接 用 interface 定义了
+
+  9  接口 interface 类型  使用接口约束开发者的数据
       interface FullName{
-          firstName:string
-          lastName:string
-          middleName?:string   // 定义接口可选 属性 可少一个 
+          firstName: string
+          lastName: string
+          middleName?: string   // 定义接口可选 属性 可少一个 
       }
 
       9.2：多一个，用索引签名
-           只要key和value满足条件 无论有多少个属性都无所谓
+           // 只要key和value满足条件 无论有多少个属性都无所谓
             interface FullName {
-                [propName:string]:string
+                [propName:string]: string
             }
             let obj:FullName = {
               firstName:'Jonathan', // 满足 string 即可
@@ -76,7 +75,7 @@ ts 是强类型，提供一套静态检测机制，写代码过程中更改变�
       TS中的接口和JS中的类一样是可以继承的
   
   11 函数接口
-     接口来定义函数的参数和返回值。
+     // 接口来定义函数的参数和返回值。
       interface SumInterface {
         (a:number, b:number):number
       }
