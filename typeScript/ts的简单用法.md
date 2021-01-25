@@ -75,7 +75,7 @@
   11 函数接口
      // 接口来定义函数的参数和返回值。
       interface SumInterface {
-        (a:number, b:number):number
+        (a:number, b:number):number  // number 返回值类型 
       }
       // 建议使用这种写法
       let sum:SumInterface= (x,y) =>{
