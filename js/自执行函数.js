@@ -31,3 +31,20 @@ var name = '张三';
     console.log(name)  // 李四 因为全局的 name 被赋值为 李四了
 })()
 console.log(name)   // 此时 name已经被改为 李四
+
+
+// 闭包
+var MathTest = function(x,y){
+    var x = x;
+    var y = y ;
+    
+    var add = function(){
+        return x + y
+    }
+    return add
+}
+
+var aFun = MathTest(3,4)
+console.log(aFun)
+// 在执行的时候  MathTest就是内部的 add 函数，调用了MathTest 就是执行了  x+y 
+// 可以将 add 认为是 function内部的一个变量，只是这个变量的值是一个函数，内部函数是可以访问它的上一级别的数据
