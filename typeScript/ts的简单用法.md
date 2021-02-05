@@ -43,6 +43,8 @@
       obj = {name:'lnj', age:33}   // 一般对象 类型 都直接 用 interface 定义了
 
   9  接口 interface 类型  使用接口约束开发者的数据
+      9.1:
+
       interface FullName{
           firstName: string
           lastName: string
@@ -62,9 +64,9 @@
             interface stringArray {
                 [propName:number]:string
             }
-
+ 
             let arr:stringArray = {
-                0:'a',
+                0:'a', 
                 1:'b',
                 2:'c'
             };
