@@ -15,6 +15,7 @@
         subscriptions: Object // 订阅数据源
     }
 ```
+
 # reducer
 用来处理同步操作，如果不需要调用接口的时候，我们前端传递的 action 可以直接调用 reducers里的方法
 ```js
@@ -47,6 +48,7 @@
         // 不同名的数据会追加。
     }
 ```
+
 # 页面调用
 ```js
     页面使用dispatch进行使用
@@ -56,6 +58,7 @@
         });
     };
 ```
+
 # effects
 用来处理异步操作，如果需要调取接口，前台页面需要调用 effects 中的方法
 将数据取出来，在传递给 reducers 里的方法进行数据操作和同步 state
@@ -75,6 +78,7 @@
     put:    发出一个 Action，类似于 dispatch 触发 reducer 改变state
     select: 返回 model 中的 state //  相当于从 state里获取数据
 ```
+
 # call
 ```js
     *deleteOne({ payload }, { call }) {
@@ -102,6 +106,7 @@
         })
     }
 ```
+
 # select put 
 ```js
     *deleteOne({ payload }, { select, put }) {
@@ -122,6 +127,7 @@
         }
     }
 ```
+
 # subscriptions
 ```js 
 // 订阅监听，比如我们监听路由，进入页面就如何，可以在这写
@@ -133,6 +139,7 @@ setup ({ dispatch, history, query }) {
 　})
 }
 ```
+
 # connect 连接 Model 和 Route 页面下的数据
 ```js
     dva 有提供 connect 方法，只要在每个 Routes 页面导入下面的代码即可
@@ -143,6 +150,7 @@ setup ({ dispatch, history, query }) {
     export default connect(({ index }) => ({ index }))(indexPage)
     // index 是 Model 里的 namespace
 ```
+
 # 前端页面调用 Model 方法
 ```js
     const { dispatch } = this.props;    //在 dva 中，可以通过 `this.props` 直接取得 `dispatch`
