@@ -2,6 +2,7 @@
  *   Complie 解析指令
  *
 */  
+// 抽出来的工具类 处理text 处理 html 各种方法 去更新数据，和绑定watcher观察者
 const compileUtile = {
     getVal(expr, vm){
         return expr.split('.').reduce((data, currentVal) => {
@@ -25,6 +26,7 @@ const compileUtile = {
             // {{person.name}} -- {{person.age}}
             // 正则替换 
             value = expr.replace(/\{\{(.+?)\}\}/g, (...args) => {
+                // 绑定观察者，将来数据发生变化 触发这里的回调，进行更新
                 new Watcher(vm, args[1], (newVal)=>{ // 此时expr有 {{a}}-{{b}} 改为 args[1]里{{person.name}} -- {{person.age}} 的值
                     this.updater.textUpdater(node, this.getContentVal(expr, vm))
         

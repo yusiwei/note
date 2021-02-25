@@ -31,6 +31,7 @@
  // 依赖收集
  class Dep{
      constructor(){
+         // 依赖收集器的容器
          this.subs = []
      }
      // 收集观察者
@@ -72,7 +73,7 @@
          }
      }
 
-     // 劫持的方法
+     // 劫持并监听所有的方法
      defineReactive(obj, key, value){
          // 会有很多次对象，先递归遍历 
          // value 传进去，可能value下还有对象
