@@ -149,6 +149,7 @@ setup ({ dispatch, history, query }) {
     在最后导出的时候使用 connect 进行与 Model 的链接
     export default connect(({ index }) => ({ index }))(indexPage)
     // index 是 Model 里的 namespace
+
 ```
 
 # 前端页面调用 Model 方法
