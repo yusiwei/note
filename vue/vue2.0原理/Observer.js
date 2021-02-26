@@ -85,11 +85,11 @@
           */
          const dep = new Dep()
          
-         // 劫持 当前传进来的对象
+         // 劫持 并监听所有的属性
          Object.defineProperty(obj, key, {
              enumerable: true,   // 是否可变
              configurable: false, // 是否可以去更改编写 
-             // 获取值走 get
+             // 获取值走 get  初始化就走了get 
              get(){
                  // 添加订阅数据变化时，往 Dep中添加观察者
                  // 收集依赖，每个观察者的依赖 一个属性对应一个观察者

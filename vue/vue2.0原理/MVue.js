@@ -11,6 +11,14 @@ const compileUtile = {
         },vm.$data)
     },
 
+    // 第三个就是输入框的值
+    setVal(expr, vm, inputVal) {
+        return expr.split('.').reduce((data, currentVal) => {
+            // data[currentVal] 是旧值
+            data[currentVal] = inputVal
+        },vm.$data)
+    },
+
     // 转换数据  替换数据
     getContentVal(expr, vm){
         return expr.replace(/\{\{(.+?)\}\}/g, (...args) => {
@@ -26,6 +34,7 @@ const compileUtile = {
             // {{person.name}} -- {{person.age}}
             // 正则替换 
             value = expr.replace(/\{\{(.+?)\}\}/g, (...args) => {
+
                 // 绑定观察者，将来数据发生变化 触发这里的回调，进行更新
                 new Watcher(vm, args[1], (newVal)=>{ // 此时expr有 {{a}}-{{b}} 改为 args[1]里{{person.name}} -- {{person.age}} 的值
                     this.updater.textUpdater(node, this.getContentVal(expr, vm))
@@ -41,6 +50,7 @@ const compileUtile = {
 
     html(node, expr, vm){
         const value = this.getVal(expr, vm)
+        
         // 在初始值 html 中就绑定一个  watcher 值
         new Watcher(vm, expr, (newVal)=>{ // 回调函数回调的是我新的值
             this.updater.htmlUpdater(node, newVal)
@@ -50,10 +60,20 @@ const compileUtile = {
     },
     model(node, expr, vm){
         const value = this.getVal(expr, vm)
+
+        // 绑定更新函数 数据 => 驱动视图
         new Watcher(vm, expr, (newVal)=>{ // 回调函数回调的是我新的值
             this.updater.modelUpdater(node, newVal)
 
         })
+
+        // 视图 => 数据 => 视图
+        // 给当前 input 输入框 添加事件  e 就是一个回调函数，在回调函数里拿到你输入的数据
+        node.addEventListener('input',(e)=>{
+            // 设置值
+            this.setVal(expr, vm, e.target.value)
+        })
+
         this.updater.modelUpdater(node, value)
     },
 
@@ -198,6 +218,24 @@ class MVue{
             // 2. 实现一个指令解析器
             // 整个 MVue.js  已实现解析指令的方法了
             new Compile(this.$el, this); // this 整个实例
+
+            // 实现代理 
+            this.proxyData(this.$data)
         }
     }
+
+    // 把 this.$data 代理成 this
+    proxyData(data){
+        for(const key in data){
+            Object.defineProperty(this, key, {
+                get(){
+                    return data[key];
+                },
+                set(newVal){
+                    data[key] = newVal;
+                }
+            })
+        }
+    }
+    // 后续取值 vm.$data[xx] 改为=> vm[xx]
 }
