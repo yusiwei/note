@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flex--骰子布局</title>
+</head>
+<body>
+    <div>一点</div>
+    <div class="box box1">
+        <span class="item"></span>
+    </div>
+
+    <div>两点</div>
+    <div class="box box2">
+        <span class="item"></span>
+        <span class="item2"></span>
+    </div>
+
+    <div>三点</div>
+    <div class="box box3">
+        <span class="item"></span>
+        <span class="item3"></span>
+        <span class="item2"></span>
+    </div>
+
+    <div>四点</div>
+    <div class="box box4">
+        <div class="column">
+            <span class="item"></span>
+            <span class="item"></span>
+        </div>
+        <div class="column">
+            <span class="item"></span>
+            <span class="item"></span>
+        </div>
+    </div>
+
+    <div>五点</div>
+    <div class="box box5">
+        <div class="column">
+            <span class="item"></span>
+            <span class="item"></span>
+        </div>
+        <div class="column">
+            <span class="item"></span>
+        </div>
+        <div class="column">
+            <span class="item"></span>
+            <span class="item"></span>
+        </div>
+    </div>
+
+    <div>六点</div>
+    <div class="box box6">
+        <div class="column">
+            <span class="item"></span>
+            <span class="item"></span>
+        </div>
+        <div class="column">
+            <span class="item"></span>
+            <span class="item"></span>
+        </div>
+        <div class="column">
+            <span class="item"></span>
+            <span class="item"></span>
+        </div>
+    </div>
+
+    <script>
+
+    </script>
+    <style>
+        .box{
+            padding: 12px;
+            width: 100px;
+            height: 100px;
+            border: 1px solid red;
+            border-radius: 8px;
+            display: flex;
+        }
+        span{
+            width: 30px;
+            height: 30px;
+            background: black;
+            border-radius: 15px;
+        }
+        /* 一点 */
+        .box{
+            justify-content: center;
+            align-items: center;
+        }
+        .box1{
+            display: flex;
+        }
+        .box1 .item{
+            align-content: center;
+        }
+
+        /* 两点 */
+        .box2{
+            justify-content: space-between;
+        }
+        .box2 .item{
+            align-self: start;
+        }
+        .box2 .item2{
+            align-self: flex-end;
+        }
+        
+        /* 三点 */
+        .box3{
+            display: flex;
+        }
+        .box3 .item{
+            align-self: start;
+        }
+        .box3 .item2{
+            align-self: flex-end;
+        }
+
+        /* 四点 */
+        .box4,.box5{
+            display: flex;
+            flex-wrap: wrap;
+            align-content: space-between;
+        }
+        .box4 .column{
+            flex-basis: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* 五点 */
+        .box5 .column{
+            flex-basis: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+        .box5 .column:nth-child(2){
+            justify-content: center;
+        }
+
+        /* 六点 */
+        .box6{
+            display: flex;
+            flex-wrap: wrap;
+            align-content: space-between;
+        }
+        .box6 .column{
+            display: flex;
+            flex-basis: 100%;
+            justify-content: space-between;
+        }
+    </style>
+</body>
+</html>
