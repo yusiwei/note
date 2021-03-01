@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    vue没有完全遵循 MVVM 是是继承了 mvvm 的思想，使用vm(ViewModel)缩写，表示 vue实例
+
+    for..in 和 Object.keys 是拿不到原型链上的
+
+    Object.create // 也算拷贝，算创建一个新的子类
+
+    vue3.0中的 proxy天生支持有数组劫持 就不需要vue 中源码里 改写数组的7个方法进行数组劫持
+
+    一个组件就是一个 watcher  是一个类
+    依赖收集：所有的属性都会增加一个dep属性
+            当渲染的时候取值了，这个dep属性就会将渲染的 watcher 收集起来
+            数据更新 会让 watcher 重新执行
+    就是观察者模式
+    （内部依赖收集是怎么做到的，每个属性都拥有自己的dep属性，
+    存放他所依赖的 watcher，当属性变化后会通知自己对应的 watcher去更新。）
+    一个属性 一个 dep
+    一个dep 对应多个 watcher 一个数据对应多个视图
+    一个 watcher 对应多个dep
+    dep 和 watcher 是多对多的关系
+
+    dep 每个属性 每个对象都有dep,是为了收集watcher的
+
+    当一个组件在渲染的时候会触发属性的get方法，那么就会把这个组件放到这个属性的dep中。也就是dep中存放所有依赖这个属性的组件，
+    当改变这个属性会触发set，这个时候循环调用dep中的所有项，来重新渲染这些依赖的组件
+
+    模板编译的 ast树是描述语法的
+    虚拟DOM 是描述dom的  层面不一样
+    生成ast树 是在VNode 的前面
+
+    with 是 js语法
+    with(vm){
+        console.log(name) // 这个name就是去 vm里取值，浏览器做的处理
+    }
+
+    生命周期钩子 就是一个数组维护着所有函数
+    生命周期执行就是：在数组里依次执行所有函数
+    vue.options 存放所有的全局属性
+    component组件，direct指令啊, filter过滤器啊
+
+    为什么data是一个函数：
+    data是函数，内部会调用Vue.extend()，会创建子类，并把子类返回，而且继承了父类，
+    每次调用改值，不受影响
+    如果是对象，在vue.mixin里的对象进行合并，会有污染
+   
+    没有new 就是没有实例
+
+    vue采用的是异步更新
+    nextTick 是异步的 是将内容维护到一个数组里，按照顺序执行，只有第一次会开启一个异步任务
+
+    先渲染页面完成一个事件循环，然后在下一个事件循环执行回调吗，
+    如果为宏任务微任务就是执行完微任务执行宏任务
+    原理就是异步方法(promise, mutationObserver, setImmediate, setTimeout)经常与事件循环一起来问。
+
+    vue中 computed里面会有标记，看需不需要更新
+</body>
+</html>
