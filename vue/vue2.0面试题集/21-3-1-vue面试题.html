@@ -6,13 +6,14 @@
     <title>Document</title>
 </head>
 <body>
-    vue没有完全遵循 MVVM 是是继承了 mvvm 的思想，使用vm(ViewModel)缩写，表示 vue实例
+    vue没有完全遵循 MVVM模型 它是继承了mvvm的思想，使用的vm(ViewModel)缩写，表示vue实例
 
     for..in 和 Object.keys 是拿不到原型链上的
 
     Object.create // 也算拷贝，算创建一个新的子类
 
     vue3.0中的 proxy天生支持有数组劫持 就不需要vue 中源码里 改写数组的7个方法进行数组劫持
+    在vue3.0中proxy只做代理了第一层，解决办法：做懒代理，取值出来
 
     一个组件就是一个 watcher  是一个类
     依赖收集：所有的属性都会增加一个dep属性
