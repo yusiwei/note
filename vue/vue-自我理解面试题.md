@@ -1,3 +1,17 @@
+# 1：生命周期有哪些方法，一般在哪里发请求
+```js
+    beforeCreate 实例初始化，数据观测(data observer)和 event/watcher 事件被调用
+    create 实例创建完成被调用，data observer属性，方法的运算，event/watcher事件回调，还没有 $el
+    beforeMount 挂载开始之前，render函数首次被调用
+    mounted el被创建的 vm.$el替换，并挂载到实例上之后调用该钩子
+    beforeUpdate 数据更新时调用，发生在虚拟DOM重新渲染和打补丁之前
+    updated 数据更改导致虚拟DOM 重新渲染，在这之后会调用
+    beforeDestroy 实例销毁之前，在这一步 实例还可以用
+    destroy Vue实例销毁后调用，Vue所有东西会解绑，事件移除，子实例销毁
+    keep-live activated 和 deactivated
+    在哪里都可以发请求，主要看你要干什么事
+```
+
 # 如何理解自定义指令
 ```js
     用法：通常在做用户权限的时候用到自定义指令，比如普通管理员没有操作表单的权限，会给按钮添加自定义指令
@@ -41,6 +55,7 @@
     原理：vuex就是创造了一个全局的 vue 实例，我们可以更改vue的实例达到共享的目的，所有组件都可以取这个实例。
         核心 就是new Vue 所有组件去拿他的状态，action写的是异步的逻辑，muntion去更新状态
 ```
+
 # vue 中使用了哪些设计模式
 ```js
      1)工厂模式： 你传入什么参数 就创建什么实例，
