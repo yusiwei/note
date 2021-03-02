@@ -39,9 +39,22 @@
 ```
 # vue2.x 和 vue 3.0 的区别
 ```js
-    1) 2.x对ts支持不友好，vue3.0是 基于函数的，ts类型很好推断，3.0本身就基于ts写的
-    2) 2.x中大量API都挂载在vue 对象的原型上，对象的哪些属性用到了或者没用到 都没办法去查找，但3.0是函数就能知道这个函数有没有被用过
-    3) vue3.0对源代码压缩做了很好的处理
-    4) 3.0对虚拟DOM 进行了重写
-    5) 3.0的compostionAPI受 reactHook启发，写法差不多
+    1) 2.x 对ts支持不友好，vue3.0 是 基于函数的，ts类型很好推断，3.0本身就基于ts写的
+    2) 2.x 中大量API都挂载在vue 对象的原型上，对象的哪些属性用到了或者没用到 都没办法去查找，但3.0是函数就能知道这个函数有没有被用过
+    3) 3.0 对源代码压缩做了很好的处理
+    3.1)  2.x 难以实现  tree shaking
+    4) 3.0 对虚拟DOM 进行了重写
+    5) 3.0 的compostionAPI受 reactHook启发，写法差不多
 ```
+
+# Tree Shaking 感念
+```js
+    用法：在 webpack.config js的 development模式下配置
+    //在开发模式下配置 tree shakeing
+    optimization: {
+        usedExports: true
+    }
+    tree shaking 就是
+    比如你引进 lodash 这个库，体积比较大，最后只用到一个方法，这个时候就用 treeshaKing将很多没有用到的模块过滤掉，删除无用的代码
+```
+  
