@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>computed</title>
+</head>
+<body>
+    <div id="app">
+        {{msg}}
+
+        <br>
+        <!-- {{ msg.split('').reverse().jojin('') }} -->
+        <!-- 进行字符换翻转 -->
+
+        <br>
+        {{reverseMsg}}
+    </div>
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data:{
+                msg:'Hello Word'
+            },
+            computed:{
+                // 计算属性中写的也是函数，韩束不需要调用，每个computed函数都需要返回值
+
+                // 1把复杂的表达式用函数封装，直接调用函数名即可用
+                reverseMsg(){
+                    // return this.msg.split('').reverse().jojin('')
+                }
+            }
+        })
+    </script>
+</body>
+</html>
