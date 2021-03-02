@@ -51,9 +51,12 @@
 ```js
     用法：在 webpack.config js的 development模式下配置
     //在开发模式下配置 tree shakeing
-    optimization: {
-        usedExports: true
-    }
+    ```js
+        optimization: {
+            usedExports: true
+        }
+    ```
+    
     tree shaking 就是
     比如你引进 lodash 这个库，体积比较大，最后只用到一个方法，这个时候就用 treeshaKing将很多没有用到的模块过滤掉，删除无用的代码
 ```
