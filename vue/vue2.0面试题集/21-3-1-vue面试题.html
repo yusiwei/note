@@ -8,7 +8,7 @@
 <body>
     vue没有完全遵循 MVVM模型 它是继承了mvvm的思想，使用的vm(ViewModel)缩写，表示vue实例
 
-    for..in 和 Object.keys 是拿不到原型链上的
+    for..in 和 Object.keys 是拿不到原型链上的数据
 
     Object.create // 也算拷贝，算创建一个新的子类
 
@@ -36,9 +36,26 @@
     虚拟DOM 是描述dom的  层面不一样
     生成ast树 是在VNode 的前面
 
+    ast 对虚拟DOM的描述
+    虚拟DOM 是对真实DOM的描述
+    虚拟DOM 不依赖真实平台环境，可以跨平台，操作虚拟DOM 进而更新在真实DOM中避免重排和重绘，减少DOM的更新
+
     with 是 js语法
     with(vm){
         console.log(name) // 这个name就是去 vm里取值，浏览器做的处理
+    }
+    with用法：查找对象属性，优先从with指定的对象中找
+    如：
+    var a = {
+        v:1
+    }
+    var obj = {
+        a:{
+            v:2
+        }
+    }
+    with(obj){
+        console.log(a.v)  //2
     }
 
     生命周期钩子 就是一个数组维护着所有函数
@@ -61,5 +78,24 @@
     原理就是异步方法(promise, mutationObserver, setImmediate, setTimeout)经常与事件循环一起来问。
 
     vue中 computed里面会有标记，看需不需要更新
+
+    diff算法就是比对，各种比，先比自己，再比属性，再比儿子，再递归比
+    diff 双端比较，深度遍历
+    每次更新会重新创建虚拟DOM
+
+    vue中的key是用来描述虚拟节点的唯一性
+    没有key 就是三次更新，一次插入
+    有key 是一次比较 然后加入
+
+    浏览器会把所有操作的老DOM 合并去更新节点。浏览器也不是马上更新也是异步更新
+
+    vue2和vue3 diff算法的差别不大 只是改了写法，vue3真正提升在加了标记，告诉你是哪一个儿子更新了
+
+
+
+    高内聚：
+    把常用的组件写在一起
+    低耦合：
+    把复杂组件拆分
 </body>
 </html>

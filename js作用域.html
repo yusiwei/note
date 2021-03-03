@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js作用域</title>
+</head>
+<body> 
+
+    <script>
+        var a = 3;
+        function fn1(a){
+            a = 4;
+        }
+        fn1(a);
+        console.log(a,'aaaaa')
+
+        var user = {age: 30};
+        function fn2(user){
+            user.age = 40;
+        }
+        fn2(user)
+        console.log(user.age,'fn2')
+        
+
+        function fn3(user){
+            // 此时赋值的是 对象，已经改了引用地址
+            user = { age: 50 }
+        }
+        fn3(user)
+        console.log(user.age,'fn3')
+    </script>  
+
+</body>
+</html>

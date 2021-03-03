@@ -11,6 +11,7 @@
     keep-live activated 和 deactivated
     在哪里都可以发请求，主要看你要干什么事
 ```
+# 2: 
 
 # 如何理解自定义指令
 ```js
@@ -83,5 +84,3 @@
     tree shaking 就是
     比如你引进 lodash 这个库，体积比较大，最后只用到一个方法，这个时候就用 treeshaKing将很多没有用到的模块过滤掉，删除无用的代码
 ```
-
-  
