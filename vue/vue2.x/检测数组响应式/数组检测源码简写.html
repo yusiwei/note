@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 安装 vue-template-compiler  browser浏览器的js-->
+    <script src="node_modules/vue-template-compiler/browser.js"></script>
+    <script>
+        let sata = [1,2,3]   // 变成响应式数据
+
+        let originalArray = Array.prototype   // 数组原来的方法
+
+        // 不是深拷贝
+        let arrayMethods = Object.create(originalArray)
+        
+        function defineReactive(obj){
+            // 函数劫持
+            // 函数劫持：把原来的方法保存，通过替换来达到你调用这个函数的目的
+            arrayMethods.push = function(...args){
+                originalArray.push.call(this,...args)
+
+                // 重新渲染
+                render()
+            }
+            obj.__proto__ = arrayMethods // js中的原型链
+        }
+        defineReactive(state)  // 
+
+        // 先写一个render 函数
+        // 插入页面的功能先保存起来
+        function render(){
+            app.innerHTML = state;
+        }
+        render()
+
+        // ast语法树，有 tag标签，child 文本内容
+
+    </script>
+</body>
+</html>

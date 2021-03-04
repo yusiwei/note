@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js 闭包</title>
+</head>
+<body>
+    <script>
+        // 题一
+        var i = 5;
+        function fn(i){
+            return function(n){
+                console.log(n + (++i));
+            }
+        }
+        var f = fn(1)  // 此时 fn只调用了一次 f接收的都是返回的函数结果
+        f(2)      // 此时 n=2 + i=+1 => 2+2 = 4
+        fn(3)(4)  // 此时 i=3 n=4 => 4+ +3 = 8
+        fn(5)(6)  // 此时 i=5 n=6 => 6+ +5 = 12
+        f(7)      // 此时 n=7 i= +2 => 7+3 = 10
+        f(9)      // 此时 n=9 i= +3 => 9+4 = 13
+        fn(10)(12)  // 此时 i=10 n=12 => 12 + 11 = 23
+        console.log(i)  // 5
+
+        // 题二
+        var i = 20;
+        function fn() {
+            i -= 2;
+            return function(n){
+                console.log((++i)-n,'结果')
+            }
+        }
+        var f = fn(); 
+        f(1); // n=1 i=20-2=18 => +18-1 = 18  i=19
+        f(2); // n=2 i=+19 =>20-2 => 18   i=20   // 因为 fn只调用了一次，此时再执行的就是 return返回的函数结果
+        fn()(3);  // n=3 i=20-2 => +18-3 = 16  16 i=19
+        fn()(4);  // n=4 i=19-2 => +17-4 = 14  14 i=18
+        f(5);     // n=5 i=+18-5 = 14    i= 19
+        fn()(8)    // n=8 i=19-2 = +17-8  10  i= 18
+        f(9)       // n=9 i=+18-9  10 i=19
+        console.log(i) // 18
+    </script>
+</body>
+</html>

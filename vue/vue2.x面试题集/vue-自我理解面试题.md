@@ -11,12 +11,33 @@
     keep-live activated 和 deactivated
     在哪里都可以发请求，主要看你要干什么事
 ```
-# 2: 
+# 2: vue MVVM 原理
+```js
+
+```
 
 # 如何理解自定义指令
 ```js
     用法：通常在做用户权限的时候用到自定义指令，比如普通管理员没有操作表单的权限，会给按钮添加自定义指令
     理解：从原理上讲，自定义指令就是把方法名弄成一个对象，当组件创建时候会去调用这些钩子函数去执行自定义指令的方法
+```
+
+# 模板编译原理
+```js
+    let { ast, render } = VueTemplateCompiler.compile(`<div>{{aaa}}</div>`)
+    console.log(ast,render)
+    // ast: tag标签，child 文本
+    模板引擎的实现原理：with + new Function
+    with 就是找属性的时候，根据传入的对象来找，new Function用变量接收字符串函数体和函数参数
+    console.log(new Function(render).toString())
+    
+    render方法执行完毕后 生成 虚拟 DOM
+    // with(this){rentun _c('div',[_s(aaa)])}  // _c是 创建节点 _s是状态
+    代码生成
+    let str = 'return' + `hello ${name}`
+    let func = new Function('name',str)
+    func('Word')   // hellow Word
+
 ```
 # vue solt是如何实现的，什么时候用它
 ```js
@@ -84,3 +105,4 @@
     tree shaking 就是
     比如你引进 lodash 这个库，体积比较大，最后只用到一个方法，这个时候就用 treeshaKing将很多没有用到的模块过滤掉，删除无用的代码
 ```
+# react和vue比较来说有什么区别
