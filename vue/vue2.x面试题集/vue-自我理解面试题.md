@@ -38,6 +38,24 @@
     let func = new Function('name',str)
     func('Word')   // hellow Word
 
+    template转成 render函数，再由render函数返回虚拟节点，再转成真是DOM
+    render函数 就是 把当前的HTML转为ast语法树，最后生成代码
+```
+# vue 的生命周期理解
+```js
+    生命周期其实就是一个回调函数，他内部是一个数组，然后遍历这个数组一次执行
+```
+
+# Vue mixin
+```js
+    混合机制，实现组件内的复用，引入组件后 多个组件可以共享数据和方法
+```
+
+# nextClick 原理
+```JS
+    考察的就是浏览器事件环
+    作用：防止多次更新，并且当 当前DOM 更新后的再去获取DOM的元素
+    源码：其实就是一个 promise
 ```
 # vue solt是如何实现的，什么时候用它
 ```js
