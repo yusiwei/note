@@ -11,9 +11,11 @@
     keep-live activated 和 deactivated
     在哪里都可以发请求，主要看你要干什么事
 ```
+
 # 2: vue MVVM 原理
 ```js
-
+    vue 是采用数据劫持，发布订阅模式，通过Observe中 Object.defineProperty 的 getter setter 方法,数据变动时通知依赖收集器Dep，通知观察者去更新视图 
+    MVVM创建实例时，整合了Oberser,Complie,Watcher 三大类，通过 Observe 监听Model变化，发生变化时，通知Watcher回调，去更新，通过Complie解析指令，Watcher作为Observe和Complie 桥梁 达到视图变化，数据更新，视图交互，数据Model更新，双向原理
 ```
 
 # 如何理解自定义指令
@@ -41,6 +43,7 @@
     template转成 render函数，再由render函数返回虚拟节点，再转成真是DOM
     render函数 就是 把当前的HTML转为ast语法树，最后生成代码
 ```
+
 # vue 的生命周期理解
 ```js
     生命周期其实就是一个回调函数，他内部是一个数组，然后遍历这个数组一次执行
@@ -57,6 +60,7 @@
     作用：防止多次更新，并且当 当前DOM 更新后的再去获取DOM的元素
     源码：其实就是一个 promise
 ```
+
 # vue solt是如何实现的，什么时候用它
 ```js
     用法：在组件内插入新标签

@@ -37,6 +37,14 @@
     Object.call(this,obj1,obj2,obj3)
     Object.apply(this,arguments)
 ```
+#  CommonJS 与 ES6 Module 的区别
+```js
+    commonJS 中 你在a.js中定义count的值 然后在a.js写方法改变count值，你在b.js调用值和方法 原来的 count 不会改变
+    导出的变量是对 原值的拷贝
+    ES6 Module中 你定义方法改变了 count 的值 最后 拿到的count 就已经被改变
+    导出的变量是 对原值的引用
+```
+
 # ajax 如何解析json
   JSON.parse
 
